@@ -46,15 +46,16 @@ let getInfo =(...input)=>           //use of rest parameters to get the input in
 	{
 		let result=check(input[0]);       //check() function is defined at the end of this file.
 		
-		if(Number.isNaN(result) == true){
-            console.log("The input is only a title");
-            flag++;
-            address=`http://www.omdbapi.com/?t=${input[0]}&apikey=9c71e39f`
+		if(Number.isNaN(result) == true)
+		{
+                  console.log("The input is only a title");
+                  flag++;
+                  address=`https://www.omdbapi.com/?t=${input[0]}&apikey=9c71e39f`
 		}
 		else{
 			console.log("The input is an id");
 			flag++;
-			address=`http://www.omdbapi.com/?i=${input[0]}&apikey=9c71e39f`
+			address=`https://www.omdbapi.com/?i=${input[0]}&apikey=9c71e39f`
 		}
 	} 
 	else if(input[0] == "" || input[1] == "")   //vacant input array
@@ -65,7 +66,7 @@ let getInfo =(...input)=>           //use of rest parameters to get the input in
 	}    
 	else{                                         //if there are two inputs in the input array
 		flag++
-		address=`http://www.omdbapi.com/?t=${input[0]}&y=${input[1]}&apikey=9c71e39f`;
+		address=`https://www.omdbapi.com/?t=${input[0]}&y=${input[1]}&apikey=9c71e39f`;
 		console.log("Input is a title with year")
 	} 
 
@@ -74,7 +75,7 @@ let getInfo =(...input)=>           //use of rest parameters to get the input in
 	   $.ajax
 	   ({
 		    type: 'GET',
-            async:true,
+                    async:true,
 		    dataType:'json',
 		    url:address,
 		    success: (data)=>
@@ -230,9 +231,11 @@ let getInfo =(...input)=>           //use of rest parameters to get the input in
                         }
                     },
 
-         timeout : 6000,
+                timeout : 6000,
 		 error:(data)=>
-		       {
+		       {        
+			        $('.loader').css('display','none');
+			         $('.limage').css('display','none');
 			        alert('Request timed out or there were problems retrieving the desired information, try again');
 		       },
 		beforeSend :()=>
