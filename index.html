@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MovieBuff</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+	
+	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <!--Navbar-->
+   <nav class="navbar fixed-top navbar-light" id="up">
+       <a class="navbar-brand" href="#">
+          <img src="brand.png" width="50" height="50" class="d-inline-block align-center rounded-circle" alt="">
+          <span class="brandname"> MovieBuff <span>
+       </a>
+   </nav>
+   <!--Search-menu-->
+   <div id="searchMenu">
+       <ul class="nav nav-tabs nav-fill custom" id="myTab" role="tablist">
+           <li class="nav-item">
+               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#title" role="tab" aria-controls="home" aria-selected="true">Title</a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#year" role="tab" aria-controls="profile" aria-selected="false">Title & Year</a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link" id="messages-tab" data-toggle="tab" href="#imdbid" role="tab" aria-controls="messages" aria-selected="false">IMDB Id.</a>
+           </li>
+       </ul>
+       <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="title" role="tabpanel" aria-labelledby="home-tab">
+               <div class="container-fluid">
+    	           <div class="row row-tab justify-content-start justify-content-sm-center justify-content-lg-start">
+    		           <div class="col-sm-8 col-lg-4 col-xl-3 col-12 d-flex flex-column">
+  	                       <form class="form-inline my-2">
+                              <input class="form-control mr-2 mt-1 col input-field" id="inputTitle" type="search" placeholder="Movie's name" aria-label="Search">
+                               <button class="btn btn-outline-success my-2 my-sm-2" id="searchByTitle"  type="submit"><i class="fas fa-search search-icon"></i></button>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="profile-tab">
+  	           <div class="container-fluid">
+    	           <div class="row row-tab justify-content-center">
+    		           <div class="col-12 d-flex flex-row justify-content-center">
+  	                       <form class="form-inline my-2">
+                               <input class="form-control mr-2 mt-1 col-12 col-md-11 input-field" id="inputTitleYear" type="search" placeholder="Movie's name" aria-label="Search">
+                                <input class="form-control mr-2 mt-0 col-9 input-field" id="inputYear" type="number" placeholder="Movie's year" aria-label="Search">
+                                <button class="btn btn-outline-success my-2" id="searchByTitleYear" type="submit"><i class="fas fa-search search-icon"></i></button>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="tab-pane fade" id="imdbid" role="tabpanel" aria-labelledby="contact-tab">
+  	           <div class="container-fluid">
+    	           <div class="row row-tab justify-content-start">
+    		           <div class="col-12 d-flex justify-content-center justify-content-lg-end mr-4">
+  	                       <form class="form-inline my-2">
+                              <input class="form-control my-2 mr-2 col input-field" id="inputId" type="search" placeholder="Movie's id" aria-label="Search">
+                              <button class="btn btn-outline-success my-2 my-sm-0" id="searchById" type="submit"><i class="fas fa-search search-icon"></i></button>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!--body of the page before clicking the search button-->
+    <div class="container-fluid mt-3 quote">
+	    <div class="row">
+		   <div class="col">
+               <blockquote class="blockquote text-left">
+                   <p class="mb-0">Movies are capable of forming the pathway to our emotions. Reading stories can do that too but the visual flow of imagination is much clear and vivid in movies. Depending on your view, whether you look at it through the eyes of an antagonist or a protagonist, you tend to feel the turmoil of actions and emotions. It can let you discover those personal emotions which you dont encounter on a regular basis. Remember those superhero movies in which, after the end, you walk out of the theatre and the superhero's theme music starts playing in your mind making you feel you are the one. Thats's the kind of nostalgia it can cast on you, there are other types too, depends on the type of the movie you were watching. Cheers to this form of expression. </p>
+                   <footer class="blockquote-footer">Dhananjay Patania</footer>
+               </blockquote>
+		   </div>
+	   </div>
+	   <div class="row mt-3 mb-2">
+		   <div class="col">
+			   You can search a movie or a TV series above, Thank you.
+		   </div>
+	   </div>
+   </div>
+
+
+   <!--Loader-->
+   <div class="loader d-flex justify-content-center"> <img src="loader.gif" class="limage pt-4"></div>
+   <!--warning-->
+   <div class="warning d-flex justify-content-center"></div>
+
+
+   <!--Search Result, movie or a tv series container-->
+   <div class="container" id="movieInfo">
+       <div class="row ">
+   	       <div class="col mt-2 d-flex justify-content-end">
+   	  	       <div>
+   	  	       	   <!--type-->
+       	  	       <div class="type font"></div>
+       	       </div>
+   	       </div>
+       </div>
+       <div class="row mt-2">
+	       <div class="col-xl-4 col-lg-5 col-12 d-flex justify-content-center my-2">
+	       	    <!--poster-->
+		        <img id="movieImage" src="">
+           </div>
+           
+           <div class="col-xl-8 col-lg-7 col-12 mt-2">
+       	       <div class="row">
+       	       	   <!--Title and year-->
+       	  	       <div class="col d-flex justify-content-between">
+       	  		       <div class="top mt-2 mt-md-0 font">
+       	  		            <span class="title"></span>
+       	  		            <span class="year font ml-1 ml-md-2"></span>
+       	  		       </div>
+       	  		   </div>
+       	       </div>
+       	       <!-- info regarding movie's time, release date and genre-->
+       	       <div class="row mt-2">
+       	  	      <div class="col-12 no-gutters font-info d-flex">
+       	  	           <span class="ml-0">
+       	  	        	  <i class="far fa-calendar-alt top-icon"></i><span class="release mx-sm-1 mx-md-2  ml-1 "></span>
+       	  		       </span>
+       	  		       <span class="ml-1">
+       	  		       	   <i class="fas fa-clock  top-icon"></i><span class="runtime mx-sm-1 mx-md-2 ml-1"></span>   
+       	  		       </span>
+       	  		       <span class="ml-1">
+       	  		       	   <i class="fas fa-film  top-icon"></i><span class="genre mx-sm-1 mx-md-2 ml-1"></span>
+       	  		       </span>
+       	  	       </div>
+       	       </div>
+   
+               <!--plot-->
+       	       <div class="row">
+       		       <div class="col-12 mt-4 mt-md-5">
+       			        <span class="plot"></span>
+       		       </div>
+       	       </div>
+       	       
+       	       <!--Rotten Tomatoes and Metacritic ratings-->
+       	       <div class="row mt-5">
+                   <div class="col-12 d-flex justify-content-around justify-content-lg-between">
+               	       <div class="rt">
+               	  	        <span class="font">Rotten Tomatoes:</span>
+               	  	        <span class="d-block d-sm-inline rt-value font"></span>
+               	       </div>
+               	       <div class="mt">
+               	   	       <span class="font">Metacritic:</span>
+               	   	       <span class="d-block d-sm-inline mc-value font"></span>
+               	   	   </div>
+               	   </div>
+       	       </div>
+       	       <!--rated-->
+               <div class="row">
+                   <div class="col">
+                       <div class="font mt-4 mt-md-3">Rated: <span class="rated"></span><i class="fas fa-star r-icon"></i></div>
+                   </div>
+               </div>
+               <!--website-->
+               <div class="row mt-4 mb-md-2 mb-xl-0">
+           	       <div class="col font">
+           	   	       <span>Website:</span>
+           	   	       <span class="website"></span>
+           	       </div>
+               </div>
+           </div>
+       </div>
+
+       <!--IMDB details-->
+       <div class="row my-2">
+           <div class="col-md-4 col-lg-5 col-xl-4 col-12 d-flex flex-column my-2 my-md-3 my-xl-1">
+       	       <div class="card text-white imdb-card">
+                   <div class="card-header d-flex justify-content-center">
+               	       <div class="card-heading"><i class="fab fa-imdb imdb-icon"></i></div>
+               	   </div>
+                   <div class="card-body">
+                       <div class="d-flex font justify-content-between">
+                           <div class="card-title">ID</div>
+                           <div class="card-text id"></div>
+                       </div>
+                       <div class="d-flex font justify-content-between">
+                           <div class="card-title">Ratings</div>
+                           <div class="card-text imdb-rating"></div>
+                       </div>
+                       <div class="d-flex font justify-content-between">
+                           <div class="card-title">Votes</div>
+                           <div class="card-text imdb-votes"></div>
+                       </div>
+                   </div>
+       	       </div>
+           </div>
+           
+           <!--Cast, Awards, Boxoffice and more info-->
+           <div class="col-md-8 col-lg-7 col-xl-8 col-12 my-2 my-md-3 my-xl-1">
+               <div class="accordion" id="relatedInfo">
+                   <div class="card">
+                       <div class="card-header" id="headingOne">
+                            <h5 class="mb-0 info-name">
+                               <button class="btn btn-link heading" type="button" data-toggle="collapse" data-target="#collapseItem" aria-expanded="true" aria-controls="collapseOne">
+                                 Cast & Crew
+                                  <i class="fas fa-users accordion-icons ml-1"></i>
+                               </button>
+                           </h5>
+                       </div>
+
+                       <div id="collapseItem" class="collapse" aria-labelledby="headingOne" data-parent="#relatedInfo">
+                           <div class="card-body d-flex flex-column cast font"> 
+                               <div>
+                                    <span class="card-info">Actors</span>
+                                    <span class="arrow-icon ml-1"><i class="fas fa-arrow-right"></i></span>
+                                    <span class="actors ml-1"></span>
+                               </div> 
+                               <div class="mt-3">
+                                    <span class="card-info">Director</span>
+                                    <span class="arrow-icon ml-1"><i class="fas fa-arrow-right"></i></span>
+                                    <span class="director ml-1"></span>
+                               </div> 
+                               <div class="mt-3">
+                           	        <span class="card-info">Writers</span>
+                           	        <span class="arrow-icon ml-1"><i class="fas fa-arrow-right"></i></span>
+                           	        <span class="writers ml-1"></span>
+                               </div>
+                               <div class="mt-3 mb-1">
+                           	      <span class="card-info">Production</span>
+                           	      <span class="arrow-icon ml-1"><i class="fas fa-arrow-right"></i></span>
+                           	      <span class="production ml-1"></span>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0 info-name">
+                                <button class="btn btn-link collapsed heading" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                   Awards & Nominations
+                                   <i class="fas fa-trophy accordion-icons ml-1"></i>
+                               </button>
+                           </h5>
+                       </div>
+                       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#relatedInfo">
+                            <div class="card-body font awards">
+                          
+                            </div>
+                       </div>
+                   </div>
+                   <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0 info-name">
+                               <button class="btn btn-link collapsed heading" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                  Box-office
+                                  <i class="fas fa-hand-holding-usd accordion-icons ml-1"></i>
+                               </button>
+                           </h5>
+                       </div>
+                       <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#relatedInfo">
+                            <div class="card-body font box-office">
+                          
+                            </div>
+                       </div>
+                   </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h5 class="mb-0 info-name">
+                                <button class="btn btn-link collapsed heading" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    More
+                                    <i class="fas fa-info-circle accordion-icons ml-1"></i>
+                               </button>
+                           </h5>
+                       </div>
+                       <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#relatedInfo">
+                           <div class="card-body font d-flex flex-wrap flex-column">
+                               <div>
+                        		    <span class="card-info">Language</span>
+                        		    <span class="arrow-icon"><i class="fas fa-arrow-right"></i></span>
+                        		    <span class="language"></span>
+                               </div> 
+                               <div class="mt-3">
+                                   <span class="card-info">Country</span>
+                                   <span class="arrow-icon"><i class="fas fa-arrow-right"></i></span>
+                                   <span class="country"></span>
+                               </div>  
+                               <div class="mt-3">
+                                    <span class="card-info">DVD</span>
+                                    <span class= "arrow-icon"><i class="fas fa-arrow-right"></i></span>
+                                    <span class="dvd"></span>
+                               </div> 
+                               <div class="optional mt-3">
+                                    <span class="card-info">Total Seasons</span>
+                                    <span class= "arrow-icon"><i class="fas fa-arrow-right"></i></span>
+                                    <span class="seasons"></span>
+                               </div>                   
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <!--clicking on this button will scroll the page upto the search-menu-->
+       <div class="row ">
+   	       <div class="col-12 d-flex justify-content-center pb-2">
+   		        <a class="btn btn-success scroll-button font" href="#searchMenu" role="button">
+                     Back to Search
+               </a>
+           </div>
+       </div>
+   </div>
+  
+   <script src="jquery-3.3.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="main.js"></script>
+</body>
+</html>

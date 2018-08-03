@@ -1,0 +1,281 @@
+body{
+	margin:0px;
+	padding:0px;
+	background-color:#48C9B0;
+}
+.navbar{
+	background-color: #212121;
+	z-index: 2;
+}
+.brandname{
+	color: white;
+	font-family: 'Libre Baskerville', serif;
+}
+.custom{
+	background-color: black;    
+    padding-top: 0rem;
+    margin-top: 4.75rem;
+    z-index: 1;
+    position: relative;
+	
+}
+#myTabContent{
+   margin-top: 0rem;
+   z-index: 1;
+   position: relative;
+}
+.input-field{
+	line-height: 1rem;
+}
+.custom > .nav-item > .nav-link {
+	background-color:  #1ABC9C;
+	color: black;
+	font-family: 'Libre Baskerville', serif;
+	font-size: 1rem;
+}
+.custom > .nav-item > .active {
+	background-color:  #212121;    
+	color:white;
+}
+.search-icon{
+	font-size: 20px;
+	color: white;
+}
+.row-tab{
+	background-color:  #212121;
+
+}
+.quote, .blockquote{
+	color:black;
+	font-family: 'Libre Baskerville', serif;
+	font-size: 1.25rem;
+	font-style: italic;
+}
+.loader {
+	width: 100%;
+	display: none;
+}
+.limage{            /*loader gif*/
+	display:none;
+}
+.warning{
+	color:white;
+	font-size: 1.5rem;
+}
+#movieInfo{
+	display:none;
+    background-color: #003333;
+    min-height: 100vh;
+    
+}
+#movieImage{
+	width:360px;
+	height:360px;
+}
+.font{
+	color:white;
+	font-family: 'Libre Baskerville', serif;
+}
+.font-info{
+   color:white;
+   font-family: 'Libre Baskerville', serif;
+   font-size: 1rem;
+}
+.top-icon{            /*release date, running-time, genre*/
+	color:white;
+	font-size: 24px;
+}
+.star-icon{
+	color:#FFEB3B;
+}
+.mc-icon{           /*metacritic icon*/
+	color:red;           
+}
+.rt-icon{           /*rotten tomatoes icon*/
+	color:#66BB6A; 
+}
+.r-icon{           /*rated icon*/
+	color:yellow;
+}
+.imdb-icon{
+	font-size:85px;
+	color:#FFC107;
+}
+.imdb-card{
+	background-color: black;
+}
+.type{                          /*type of the search result*/
+	text-transform: capitalize;
+}
+.plot{
+	font-style: italic;
+	color: white;
+    font-family: 'Libre Baskerville', serif;
+}
+.title{
+	font-size: 1.5rem;
+}
+.accordion >  .card > .card-header{
+	background-color: #006064;
+}
+.accordion > .card > .collapse > .card-body{
+	background-color: #003333;
+}
+.accordion > .card > .card-header > .info-name > .btn{
+	color:white !important;
+}
+.accordion-icons{
+	color: white;
+	font-size: 22px;
+}
+.arrow-icon{
+	color: white;
+	font-size: 12px;
+}
+.card-info{
+	color: #1ABC9C;
+}
+.website{                     /*for breaking the link into two lines, if, in case it overflows from the container*/
+	overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+@media only screen and (min-width: 250px) and (max-width:313px)
+{  
+   #myTab{
+   	display:flex;
+   	flex-direction: column;
+   }
+   .quote, .blockquote{
+   	font-size: 0.7rem;
+   }
+   #movieImage{
+   	width:220px;
+   	height: 220px;
+   }
+   .font-info{
+		color:white;
+		font-family: 'Libre Baskerville', serif;
+		font-size: 0.75rem;
+	}
+	.top-icon{
+		color:white;
+		font-size:18px;
+	}
+	.title{
+		font-size: 1.25rem;
+	}
+	.plot{
+    	font-size: 0.8rem;
+    	color: white;
+    	font-family: 'Libre Baskerville', serif;
+    }
+    .card-icon{
+    	font-size: 54px;
+    }
+    .heading{
+    	font-size: 0.85rem;
+    }
+    .accordion-icons{
+    	font-size: 16px;
+    }
+
+}
+
+@media only screen and (min-width: 314px) and (max-width: 460px)
+{
+	.font{
+		font-size: 1rem;
+	}
+	.quote, .blockquote{
+		font-size: 1rem;
+	}
+	.font-info{
+		color:white;
+		font-family: 'Libre Baskerville', serif;
+		font-size: 0.80rem;
+	}
+	.top-icon{
+		color:white;
+		font-size:18px;
+	}
+	.title{
+		font-size: 1.25rem;
+	}
+	#movieImage{
+	width:280px;
+	height:280px;
+    }
+    .plot{
+    	font-size: 0.85rem;
+    	color: white;
+    	font-family: 'Libre Baskerville', serif;
+    }
+    .card-icon{
+    	font-size: 54px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 799px)
+{
+	#movieImage{
+	width:420px;
+	height:400px;
+    }
+    .quote, .blockquote{
+    	font-size: 1.25rem;
+    }
+    .font-info{
+		color:white;
+		font-family: 'Libre Baskerville', serif;
+		font-size: 1rem;
+	} 
+	.heading{
+		font-size: 1.25rem;
+	}
+	.font{
+		font-size: 1.25rem;
+	}
+	.imdb-icon{
+		font-size: 80px;
+	}
+	.top-icon{
+		color:white;
+		font-size:22px;
+	}   
+}
+
+/* media query for devices like ipad pro, nexus 10, laptop with touch*/
+
+@media only screen and (min-width: 800px) and (min-height:940px) and (max-height:1370px) 
+{   
+	#movieImage{
+	width:420px;
+	height:500px;
+    }
+    .input-field{
+    	line-height: 1.3rem;
+    	font-size: 1.3rem;
+    }
+	.font{
+		font-size: 1.3rem;
+	}
+	.heading{
+		font-size: 1.25rem;
+	}
+	.plot{
+		font-size: 1.3rem;
+	}
+	.font-info{
+		font-size: 1.25rem;
+	}
+	.title{
+		font-size: 1.6rem;
+	}
+	.quote, .blockquote{
+    	font-size: 1.5rem;
+    }
+    .brandname{
+    	font-size: 1.4rem;
+    }
+}
